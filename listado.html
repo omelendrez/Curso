@@ -1,0 +1,119 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+
+<body>
+  <h2>Listado</h2>
+  <div id="menu"></div>
+  <hr>
+  <div class="table">
+
+    <table id="tabla">
+      <div class="titulo">
+        Listado
+      </div>
+
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Nacimiento</th>
+          <th>Domicilio</th>
+          <th>Email</th>
+          <th>Sexo</th>
+          <th>Estado civil</th>
+        </tr>
+      </thead>
+
+      <tbody id="cuerpo">
+      </tbody>
+
+    </table>
+  </div>
+  <form id="formulario">
+
+    <div class="titulo">
+      Editar Contacto
+    </div>
+
+    <div class="input-group">
+      <label>Nombre</label>
+      <input type="text" name="nombre" class="input-control" required>
+    </div>
+
+    <div class="input-group">
+      <label>Apellido</label>
+      <input type="text" name="apellido" class="input-control" required>
+    </div>
+
+    <div class="input-group">
+      <label>Nacimiento</label>
+      <input type="date" name="fechaNacimiento" class="input-control" required>
+    </div>
+
+    <div class="input-group">
+      <label>Domicilio</label>
+      <input type="text" name="domicilio" class="input-control" required>
+    </div>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" name="email" class="input-control" required>
+    </div>
+
+    <div class="input-group">
+      <label>Sexo</label>
+      <select name="sexo" id="sexo" class="input-control">
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label>Estado civil</label>
+      <select name="estadoCivil" id="estadoCivil" class="input-control">
+      </select>
+    </div>
+
+    <div class="input-group">
+      <button type="submit" class="button">Grabar</button>
+    </div>
+
+    <div class="input-group">
+      <p id="error" class="error"></p>
+    </div>
+
+  </form>
+
+  <script src="comunes.js"></script>
+  <script src="funciones.js"></script>
+
+  <script>
+    document.getElementById("formulario").style.display = "none"
+    generarOtraTabla()
+
+    cargarSelect('sexo', sexos)
+    cargarSelect('estadoCivil', estadosCiviles)
+
+    const grabar = event => {
+      event.preventDefault()
+
+      const campos = formulario.elements
+      const payload = {}
+      for (let i = 0; i < campos.length; i++) {
+        if (campos[i].name !== '')
+          payload[campos[i].name] = campos[i].value
+      }
+      guardarContacto(payload)
+
+      document.getElementById("tabla").style.display = "block"
+      document.getElementById("formulario").style.display = "none"
+    }
+
+    formulario.onsubmit = grabar
+
+  </script>
+</body>
+
+</html>
