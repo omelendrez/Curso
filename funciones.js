@@ -189,7 +189,7 @@ const editarRegistro = (valorNombre) => {
   for (campo in contacto) {
     document.getElementsByName(campo)[0].value = contacto[campo]
   }
-  document.getElementById("tabla").style.display = "none"
+  document.getElementsByClassName("tabla")[0].style.display = "none"
   document.getElementById("formulario").style.display = "block"
 }
 
