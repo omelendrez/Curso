@@ -115,7 +115,7 @@ table {
 }
 
 /*  TODO */
-.table {
+.tabla {
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 2px 4px 10px #34495e;
@@ -124,7 +124,7 @@ table {
   min-height: 80%;
 }
 
-div.table div.titulo {
+div.tabla div.titulo {
   font-family: Roboto;
   /* TODO */
   font-size: 1.2em;
