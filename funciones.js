@@ -121,7 +121,6 @@ const generarOtraTabla = () => {
 
     })
 
-    // TODO
     html.push(`
     <td class="no-border">
       <i 
@@ -131,7 +130,6 @@ const generarOtraTabla = () => {
       </i>
     </td>
     `)
-    // TODO
     html.push(`
     <td class="no-border">
       <i 
@@ -193,7 +191,6 @@ const editarRegistro = (valorNombre) => {
   document.getElementById("formulario").style.display = "block"
 }
 
-// TODO 
 const obtenerLista = () => JSON.parse(localStorage.getItem(db)) || []
 
 crearMenu()
