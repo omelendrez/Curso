@@ -1,3 +1,6 @@
-export const fechaNacimiento = '2019-03-22'
-export const nombre = 'Omar'
-export const calcular = valor => valor * 2
+const x = 1
+
+
+if(!x) {
+  console.log('no esta definido')
+}
