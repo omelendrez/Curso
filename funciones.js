@@ -187,7 +187,8 @@ const editarRegistro = (valorNombre) => {
   const lista = obtenerLista()
   const contacto = lista.find(contacto => contacto.nombre === valorNombre)
   for (campo in contacto) {
-    document.getElementsByName(campo)[0].value = contacto[campo]
+    if (document.getElementsByName(campo)[0])
+      document.getElementsByName(campo)[0].value = contacto[campo]
   }
   document.getElementsByClassName("tabla")[0].style.display = "none"
   document.getElementById("formulario").style.display = "block"
