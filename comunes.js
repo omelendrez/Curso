@@ -52,6 +52,7 @@ const meses = [
 ]
 
 const db = 'basededatos'
+const usuarios = 'usuarios'
 
 const formatearFecha = (fecha) => { // 2019-01-23
   const lista = fecha.split('-')

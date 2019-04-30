@@ -193,4 +193,15 @@ const editarRegistro = (valorNombre) => {
 
 const obtenerLista = () => JSON.parse(localStorage.getItem(db)) || []
 
+const guardarUsuario = usuario => {
+  const lista = JSON.parse(localStorage.getItem(usuarios)) || []
+
+  // agregar    
+  lista.push(usuario)
+
+  localStorage.setItem(usuarios, JSON.stringify(lista))
+  location.href = 'login.html'
+}
+
+
 crearMenu()

@@ -98,6 +98,13 @@
         return
       }
 
+      const campos = registrationForm.elements
+      const payload = {}
+      for (let i = 0; i < campos.length; i++) {
+        if (campos[i].name !== '')
+          payload[campos[i].name] = campos[i].value
+      }
+      guardarUsuario(payload)
     }
 
     registrationForm.onsubmit = guardar
