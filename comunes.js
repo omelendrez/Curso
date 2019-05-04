@@ -50,9 +50,31 @@ const meses = [
     nombre: 'Diciembre'
   }
 ]
-
-const db = 'basededatos'
+const opcionesMenu = [
+  {
+    pagina: '/',
+    texto: 'Inicio'
+  },
+  {
+    pagina: '/contactos.html',
+    texto: 'Contactos'
+  },
+  {
+    pagina: '/listado.html',
+    texto: 'Listado'
+  },
+  {
+    pagina: '/login.html',
+    texto: 'Login'
+  },
+  {
+    pagina: '/registro.html',
+    texto: 'Registrarme'
+  }
+]
+const contactos = 'contactos'
 const usuarios = 'usuarios'
+const usuarioActual = 'usuarioActual'
 
 const formatearFecha = (fecha) => { // 2019-01-23
   const lista = fecha.split('-')
