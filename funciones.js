@@ -199,3 +199,4 @@ const obtenerUsuarioActual = () => {
   return JSON.parse(localStorage.getItem(usuarioActual))
 }
 
+crearMenu()
