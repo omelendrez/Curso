@@ -186,7 +186,6 @@ const guardarUsuario = usuario => {
 const loguearse = usuario => {
   const lista = JSON.parse(localStorage.getItem(usuarios))
   const user = lista.find(usr => usr.usuario === usuario.usuario && usr.password === usuario.password)
-
   if (!user) {
     error.innerHTML = 'Usuario o password incorrectas'
     return
@@ -200,4 +199,3 @@ const obtenerUsuarioActual = () => {
   return JSON.parse(localStorage.getItem(usuarioActual))
 }
 
-crearMenu()
