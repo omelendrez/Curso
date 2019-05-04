@@ -68,6 +68,15 @@
         error.innerHTML = 'Password debe tener 8 caracteres máximo'
         return
       }
+     
+      const campos = loginForm.elements
+      const payload = {}
+      for (let i = 0; i < campos.length; i++) {
+        if (campos[i].name !== '')
+          payload[campos[i].name] = campos[i].value
+      }
+      loguearse(payload)
+
     }
 
     loginForm.onsubmit = login
