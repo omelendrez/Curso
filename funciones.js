@@ -1,4 +1,4 @@
-import { obtenerUsuarioActual, obtenerLista, editarRegistro } from './datos.js'
+import { obtenerUsuarioActual, obtenerLista } from './datos.js'
 import { opcionesMenu, formatearFecha, sexos, estadosCiviles } from './comunes.js'
 
 export const crearMenu = () => {
