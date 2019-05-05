@@ -34,7 +34,7 @@
 
     </table>
   </div>
-  <form id="formulario">
+  <form id="formulario" style="display: none;">
 
     <div class="titulo">
       Editar Contacto
@@ -99,6 +99,18 @@
     document.getElementById("formulario").style.display = "none"
 
     generarTabla()
+
+    const botonesEditar = document.getElementsByClassName('fa-edit')
+    for (let i = 0; i < botonesEditar.length; i++) {
+      const boton = botonesEditar[i];
+      boton.onclick = editarRegistro;
+    }
+
+    const botonesBorrar = document.getElementsByClassName('fa-trash')
+    for (let i = 0; i < botonesBorrar.length; i++) {
+      const boton = botonesBorrar[i];
+      boton.onclick = borrarRegistro;
+    }
 
     cargarSelect('sexo', sexos)
     cargarSelect('estadoCivil', estadosCiviles)

@@ -9,7 +9,7 @@ export const guardarContacto = contacto => {
         // modificar
         lista.map(registro => {
             if (registro.nombre === contacto.nombre) {
-                for (campo in contacto) {
+                for (const campo in contacto) {
                     registro[campo] = contacto[campo]
                 }
             }
@@ -23,17 +23,19 @@ export const guardarContacto = contacto => {
     location.href = 'listado.html'
 }
 
-export const borrarRegistro = (nombre) => {
+export const borrarRegistro = (valor) => {
+    const nombre = valor.target.dataset.nombre
     const lista = obtenerLista()
     const resultado = lista.filter(item => item.nombre !== nombre)
     localStorage.setItem(contactos, JSON.stringify(resultado))
     location.href = 'listado.html'
 }
 
-export const editarRegistro = (valorNombre) => {
+export const editarRegistro = (valor) => {
+    const nombre = valor.target.dataset.nombre
     const lista = obtenerLista()
-    const contacto = lista.find(contacto => contacto.nombre === valorNombre)
-    for (campo in contacto) {
+    const contacto = lista.find(contacto => contacto.nombre === nombre)
+    for (const campo in contacto) {
         if (document.getElementsByName(campo)[0])
             document.getElementsByName(campo)[0].value = contacto[campo]
     }

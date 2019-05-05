@@ -1,4 +1,4 @@
-import { obtenerUsuarioActual, obtenerLista } from './datos.js'
+import { obtenerUsuarioActual, obtenerLista, editarRegistro } from './datos.js'
 import { opcionesMenu, formatearFecha, sexos, estadosCiviles } from './comunes.js'
 
 export const crearMenu = () => {
@@ -12,6 +12,8 @@ export const crearMenu = () => {
       a.href = opcion.pagina
       if (document.location.pathname === opcion.pagina)
         a.className = 'active'
+      if (opcion.texto === 'Logout')
+        a.className = 'float-right'
       const div = document.getElementById('menu')
       div.appendChild(a)
     }
@@ -76,20 +78,12 @@ export const generarTabla = () => {
 
     html.push(`
     <td class="no-border">
-      <i 
-        class="fa fa-trash" 
-        onClick="borrarRegistro('${objeto.nombre}')"
-        >
-      </i>
+      <i class="fa fa-trash" data-nombre="${objeto.nombre}"></i>
     </td>
     `)
     html.push(`
     <td class="no-border">
-      <i 
-        class="fa fa-edit" 
-        onClick="editarRegistro('${objeto.nombre}')"
-        >
-      </i>
+      <i class="fa fa-edit" data-nombre="${objeto.nombre}"></i>
     </td>
     `)
 
