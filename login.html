@@ -36,11 +36,10 @@
 
   </form>
 
-  <script src="comunes.js"></script>
-  <script src="funciones.js"></script>
-  <script src="datos.js"></script>
+  <script type="module">
 
-  <script>
+    import { loguearse } from './datos.js'
+
     const login = (e) => {
       e.preventDefault();
       const error = document.getElementById('error')

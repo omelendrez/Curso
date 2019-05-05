@@ -6,67 +6,74 @@
 </head>
 
 <body>
-  <h2>Contactos</h2>
-  <div id="menu"></div>
-  <hr>
+  <div class="contenido">
 
-  <form id="formulario">
+    <h2>Contactos<span class="usuario" id="usuario"></span></h2>
+    <div id="menu"></div>
+    <hr>
 
-    <div class="titulo">
-      Nuevo Contacto
-    </div>
+    <form id="formulario">
 
-    <div class="input-group">
-      <label>Nombre</label>
-      <input type="text" id="nombre" name="nombre" class="input-control" required autofocus>
-    </div>
+      <div class="titulo">
+        Nuevo Contacto
+      </div>
 
-    <div class="input-group">
-      <label>Apellido</label>
-      <input type="text" id="apellido" name="apellido" class="input-control" required>
-    </div>
+      <div class="input-group">
+        <label>Nombre</label>
+        <input type="text" id="nombre" name="nombre" class="input-control" required autofocus>
+      </div>
 
-    <div class="input-group">
-      <label>Nacimiento</label>
-      <input type="date" name="fechaNacimiento" class="input-control" required>
-    </div>
+      <div class="input-group">
+        <label>Apellido</label>
+        <input type="text" id="apellido" name="apellido" class="input-control" required>
+      </div>
 
-    <div class="input-group">
-      <label>Domicilio</label>
-      <input type="text" id="domicilio" name="domicilio" class="input-control" required>
-    </div>
+      <div class="input-group">
+        <label>Nacimiento</label>
+        <input type="date" name="fechaNacimiento" class="input-control" required>
+      </div>
 
-    <div class="input-group">
-      <label>Email</label>
-      <input type="email" name="email" class="input-control" required>
-    </div>
+      <div class="input-group">
+        <label>Domicilio</label>
+        <input type="text" id="domicilio" name="domicilio" class="input-control" required>
+      </div>
 
-    <div class="input-group">
-      <label>Sexo</label>
-      <select name="sexo" id="sexo" class="input-control">
-      </select>
-    </div>
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" class="input-control" required>
+      </div>
 
-    <div class="input-group">
-      <label>Estado civil</label>
-      <select name="estadoCivil" id="estadoCivil" class="input-control">
-      </select>
-    </div>
+      <div class="input-group">
+        <label>Sexo</label>
+        <select name="sexo" id="sexo" class="input-control">
+        </select>
+      </div>
 
-    <div class="input-group">
-      <button type="submit" class="button">Grabar</button>
-    </div>
-    <div class="input-group">
-      <p id="error" class="error"></p>
-    </div>
+      <div class="input-group">
+        <label>Estado civil</label>
+        <select name="estadoCivil" id="estadoCivil" class="input-control">
+        </select>
+      </div>
 
-  </form>
+      <div class="input-group">
+        <button type="submit" class="button">Grabar</button>
+      </div>
+      <div class="input-group">
+        <p id="error" class="error"></p>
+      </div>
 
-  <script src="comunes.js"></script>
-  <script src="funciones.js"></script>
-  <script src="datos.js"></script>
+    </form>
+  </div>
 
-  <script>
+  <script type="module">
+    import { cargarSelect } from './funciones.js'
+    import { guardarContacto, obtenerUsuarioActual } from './datos.js'
+    import { sexos, estadosCiviles } from './comunes.js'
+    import { crearMenu } from './funciones.js'
+
+    document.getElementById('usuario').innerText = obtenerUsuarioActual() ? obtenerUsuarioActual().fullName : ''
+
+    crearMenu()
 
     cargarSelect('sexo', sexos)
     cargarSelect('estadoCivil', estadosCiviles)
@@ -118,7 +125,7 @@
         if (campos[i].name !== '')
           payload[campos[i].name] = campos[i].value
       }
-      
+
       guardarContacto(payload)
     }
 

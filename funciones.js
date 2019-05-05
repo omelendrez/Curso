@@ -1,18 +1,26 @@
-const crearMenu = () => {
+import { obtenerUsuarioActual, obtenerLista } from './datos.js'
+import { opcionesMenu, formatearFecha, sexos, estadosCiviles } from './comunes.js'
+
+export const crearMenu = () => {
+  const estaLogueado = obtenerUsuarioActual()
   opcionesMenu.map(opcion => {
-    const a = document.createElement('a')
-    const linkText = document.createTextNode(opcion.texto)
-    a.appendChild(linkText)
-    a.title = opcion.texto
-    a.href = opcion.pagina
-    if (document.location.pathname === opcion.pagina)
-      a.className = 'active'
-    const div = document.getElementById('menu')
-    div.appendChild(a)
+    if ((estaLogueado && opcion.logueado) || (!estaLogueado && !opcion.logueado)) {
+      const a = document.createElement('a')
+      const linkText = document.createTextNode(opcion.texto)
+      a.appendChild(linkText)
+      a.title = opcion.texto
+      a.href = opcion.pagina
+      if (document.location.pathname === opcion.pagina)
+        a.className = 'active'
+      if (opcion.texto === 'Logout')
+        a.className = 'float-right'
+      const div = document.getElementById('menu')
+      div.appendChild(a)
+    }
   })
 }
 
-const cargarSelect = (desplegable, lista) => {
+export const cargarSelect = (desplegable, lista) => {
   const sel = document.getElementById(desplegable)
   for (let i = 0; i < lista.length; i++) {
     const opt = document.createElement('option')
@@ -22,37 +30,7 @@ const cargarSelect = (desplegable, lista) => {
   }
 }
 
-const xgenerarTabla = () => {
-  // Tomar elemento tbody
-  const miTabla = document.getElementById('cuerpo')
-
-  // recorrer lista de contactos (contactos.js)
-  contactos.map(contacto => {
-
-    // crear un renglón (tr)
-    const renglon = document.createElement('tr')
-
-    // por cada campo que existe en un contacto, hacer:
-    for (campo in contacto) {
-
-      // crear una celda (td)
-      const celda = document.createElement('td')
-
-      // crear un nodo tipo texto con el contenido del campo (Pablo, Hombre, etc.)
-      const data = document.createTextNode(contacto[campo])
-
-      // agregar el nodo de texto creado a la celda (td)
-      celda.appendChild(data)
-
-      // agregar la celda (td) al renglon (tr)
-      renglon.appendChild(celda)
-    }
-    // agregar el renglon (tr con todas sus celdas creadas) la tabla (tbody) 
-    miTabla.appendChild(renglon)
-  })
-}
-
-const generarOtraTabla = () => {
+export const generarTabla = () => {
   // tomar elemanto body de la tabla que tiene id cuerpo
   const miTabla = document.getElementById('cuerpo')
 
@@ -76,6 +54,11 @@ const generarOtraTabla = () => {
       // obtener el valor de la propiedad
       // de acuerdo al nombre del campo, le asignamos el valor que corresponda
       switch (propiedad) {
+        case 'creado':
+        case 'modificado':
+          centrado = 'centrado'
+          valor = objeto[propiedad]
+          break
         case 'fechaNacimiento':
           valor = formatearFecha(objeto[propiedad])
           centrado = 'centrado'
@@ -100,20 +83,12 @@ const generarOtraTabla = () => {
 
     html.push(`
     <td class="no-border">
-      <i 
-        class="fa fa-trash" 
-        onClick="borrarRegistro('${objeto.nombre}')"
-        >
-      </i>
+      <i class="fa fa-trash" data-nombre="${objeto.nombre}"></i>
     </td>
     `)
     html.push(`
     <td class="no-border">
-      <i 
-        class="fa fa-edit" 
-        onClick="editarRegistro('${objeto.nombre}')"
-        >
-      </i>
+      <i class="fa fa-edit" data-nombre="${objeto.nombre}"></i>
     </td>
     `)
 
@@ -129,6 +104,3 @@ const generarOtraTabla = () => {
   miTabla.innerHTML = contenidoHTML
 
 }
-
-
-crearMenu()

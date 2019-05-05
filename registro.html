@@ -46,12 +46,10 @@
 
   </form>
 
-  <script src="comunes.js"></script>
-  <script src="funciones.js"></script>
-  <script src="datos.js"></script>
+  <script type="module">
+    import { crearMenu } from './funciones.js'
+    import { guardarUsuario } from './datos.js'
 
-
-  <script>
     const guardar = (e) => {
       e.preventDefault();
       const error = document.getElementById('error')
@@ -110,6 +108,7 @@
     }
 
     registrationForm.onsubmit = guardar
+    crearMenu()
   </script>
 
 

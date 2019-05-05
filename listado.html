@@ -6,94 +6,116 @@
 </head>
 
 <body>
-  <h2>Listado</h2>
+  <h2>Listado<span class="usuario" id="usuario"></span></h2>
   <div id="menu"></div>
   <hr>
-  <div class="tabla">
+  <div class="contenido">
 
-    <table id="tabla">
+    <div class="tabla">
+
+      <table id="tabla">
+        <div class="titulo">
+          Listado
+        </div>
+
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nacimiento</th>
+            <th>Domicilio</th>
+            <th>Email</th>
+            <th>Sexo</th>
+            <th>Estado civil</th>
+            <th>Usuario</th>
+            <th>Creado</th>
+            <th>Modificado</th>
+          </tr>
+        </thead>
+
+        <tbody id="cuerpo">
+        </tbody>
+
+      </table>
+    </div>
+    <form id="formulario" style="display: none;">
+
       <div class="titulo">
-        Listado
+        Editar Contacto
       </div>
 
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Nacimiento</th>
-          <th>Domicilio</th>
-          <th>Email</th>
-          <th>Sexo</th>
-          <th>Estado civil</th>
-          <th>Usuario</th>
-        </tr>
-      </thead>
+      <div class="input-group">
+        <label>Nombre</label>
+        <input type="text" name="nombre" class="input-control" required>
+      </div>
 
-      <tbody id="cuerpo">
-      </tbody>
+      <div class="input-group">
+        <label>Apellido</label>
+        <input type="text" name="apellido" class="input-control" required>
+      </div>
 
-    </table>
+      <div class="input-group">
+        <label>Nacimiento</label>
+        <input type="date" name="fechaNacimiento" class="input-control" required>
+      </div>
+
+      <div class="input-group">
+        <label>Domicilio</label>
+        <input type="text" name="domicilio" class="input-control" required>
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" class="input-control" required>
+      </div>
+
+      <div class="input-group">
+        <label>Sexo</label>
+        <select name="sexo" id="sexo" class="input-control">
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Estado civil</label>
+        <select name="estadoCivil" id="estadoCivil" class="input-control">
+        </select>
+      </div>
+
+      <div class="input-group">
+        <button type="submit" class="button">Grabar</button>
+      </div>
+
+      <div class="input-group">
+        <p id="error" class="error"></p>
+      </div>
+
+    </form>
   </div>
-  <form id="formulario">
 
-    <div class="titulo">
-      Editar Contacto
-    </div>
+  <script type="module">
+    import { generarTabla, cargarSelect, crearMenu } from './funciones.js'
+    import { guardarContacto, editarRegistro, borrarRegistro, obtenerUsuarioActual } from './datos.js'
+    import { sexos, estadosCiviles } from './comunes.js'
 
-    <div class="input-group">
-      <label>Nombre</label>
-      <input type="text" name="nombre" class="input-control" required>
-    </div>
+    document.getElementById('usuario').innerText = obtenerUsuarioActual() ? obtenerUsuarioActual().fullName : ''
 
-    <div class="input-group">
-      <label>Apellido</label>
-      <input type="text" name="apellido" class="input-control" required>
-    </div>
+    crearMenu()
 
-    <div class="input-group">
-      <label>Nacimiento</label>
-      <input type="date" name="fechaNacimiento" class="input-control" required>
-    </div>
-
-    <div class="input-group">
-      <label>Domicilio</label>
-      <input type="text" name="domicilio" class="input-control" required>
-    </div>
-
-    <div class="input-group">
-      <label>Email</label>
-      <input type="email" name="email" class="input-control" required>
-    </div>
-
-    <div class="input-group">
-      <label>Sexo</label>
-      <select name="sexo" id="sexo" class="input-control">
-      </select>
-    </div>
-
-    <div class="input-group">
-      <label>Estado civil</label>
-      <select name="estadoCivil" id="estadoCivil" class="input-control">
-      </select>
-    </div>
-
-    <div class="input-group">
-      <button type="submit" class="button">Grabar</button>
-    </div>
-
-    <div class="input-group">
-      <p id="error" class="error"></p>
-    </div>
-
-  </form>
-
-  <script src="comunes.js"></script>
-  <script src="funciones.js"></script>
-  <script src="datos.js"></script>
-
-  <script>
     document.getElementById("formulario").style.display = "none"
-    generarOtraTabla()
+
+    generarTabla()
+
+    const botonesEditar = document.getElementsByClassName('fa-edit')
+    for (let i = 0; i < botonesEditar.length; i++) {
+      const boton = botonesEditar[i];
+      boton.onclick = editarRegistro;
+    }
+
+    const botonesBorrar = document.getElementsByClassName('fa-trash')
+    for (let i = 0; i < botonesBorrar.length; i++) {
+      const boton = botonesBorrar[i];
+      boton.onclick = borrarRegistro;
+    }
 
     cargarSelect('sexo', sexos)
     cargarSelect('estadoCivil', estadosCiviles)
