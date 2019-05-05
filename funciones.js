@@ -3,7 +3,7 @@ import { opcionesMenu, formatearFecha, sexos, estadosCiviles } from './comunes.j
 
 export const crearMenu = () => {
   const estaLogueado = obtenerUsuarioActual()
-  opcionesMenu.map(opcion => {
+  opcionesMenu.forEach(opcion => {
     if ((estaLogueado && opcion.logueado) || (!estaLogueado && !opcion.logueado)) {
       const a = document.createElement('a')
       const linkText = document.createTextNode(opcion.texto)
@@ -47,7 +47,7 @@ export const generarTabla = () => {
 
     // recorrer las propiedades del objeto
     // usamos Object.keys para convertir las propiedades en una lista (array)
-    Object.keys(objeto).map(propiedad => {
+    Object.keys(objeto).forEach(propiedad => {
 
       let valor = '', centrado = ''
 
