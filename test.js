@@ -1,6 +1,9 @@
-const x = 1
+const a = 3
+
+const b = 5
 
 
-if(!x) {
-  console.log('no esta definido')
-}
+const c = a > b ? 'Mayor' : 'Menor'
+
+
+console.log (c)

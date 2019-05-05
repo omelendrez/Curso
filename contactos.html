@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  <h2>Contactos</h2>
+  <h2>Contactos<span class="usuario" id="usuario"></span></h2>
   <div id="menu"></div>
   <hr>
 
@@ -62,11 +62,15 @@
 
   </form>
 
-  <script src="comunes.js"></script>
-  <script src="funciones.js"></script>
-  <script src="datos.js"></script>
+  <script type="module">
+    import { cargarSelect } from './funciones.js'
+    import { guardarContacto, obtenerUsuarioActual } from './datos.js'
+    import { sexos, estadosCiviles } from './comunes.js'
+    import { crearMenu } from './funciones.js'
 
-  <script>
+    document.getElementById('usuario').innerText = obtenerUsuarioActual() ? obtenerUsuarioActual().fullName : ''
+
+    crearMenu()
 
     cargarSelect('sexo', sexos)
     cargarSelect('estadoCivil', estadosCiviles)
@@ -118,7 +122,7 @@
         if (campos[i].name !== '')
           payload[campos[i].name] = campos[i].value
       }
-      
+
       guardarContacto(payload)
     }
 

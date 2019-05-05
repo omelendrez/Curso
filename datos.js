@@ -1,4 +1,6 @@
-const guardarContacto = contacto => {
+import { usuarioActual, contactos, usuarios } from './comunes.js'
+
+export const guardarContacto = contacto => {
     contacto.usuario = obtenerUsuarioActual().usuario
 
     const lista = JSON.parse(localStorage.getItem(contactos)) || []
@@ -21,14 +23,14 @@ const guardarContacto = contacto => {
     location.href = 'listado.html'
 }
 
-const borrarRegistro = (nombre) => {
+export const borrarRegistro = (nombre) => {
     const lista = obtenerLista()
     const resultado = lista.filter(item => item.nombre !== nombre)
     localStorage.setItem(contactos, JSON.stringify(resultado))
     location.href = 'listado.html'
 }
 
-const editarRegistro = (valorNombre) => {
+export const editarRegistro = (valorNombre) => {
     const lista = obtenerLista()
     const contacto = lista.find(contacto => contacto.nombre === valorNombre)
     for (campo in contacto) {
@@ -39,9 +41,9 @@ const editarRegistro = (valorNombre) => {
     document.getElementById("formulario").style.display = "block"
 }
 
-const obtenerLista = () => JSON.parse(localStorage.getItem(contactos)) || []
+export const obtenerLista = () => JSON.parse(localStorage.getItem(contactos)) || []
 
-const guardarUsuario = usuario => {
+export const guardarUsuario = usuario => {
     const lista = JSON.parse(localStorage.getItem(usuarios)) || []
 
     // agregar    
@@ -51,7 +53,7 @@ const guardarUsuario = usuario => {
     location.href = 'login.html'
 }
 
-const loguearse = usuario => {
+export const loguearse = usuario => {
     const lista = JSON.parse(localStorage.getItem(usuarios))
     const user = lista.find(usr => usr.usuario === usuario.usuario && usr.password === usuario.password)
     if (!user) {
@@ -63,6 +65,11 @@ const loguearse = usuario => {
     location.href = '/'
 }
 
-const obtenerUsuarioActual = () => {
+export const obtenerUsuarioActual = () => {
     return JSON.parse(localStorage.getItem(usuarioActual))
+}
+
+export const logout = () => {
+    localStorage.removeItem(usuarioActual)
+    location.href = '/'
 }

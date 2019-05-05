@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  <h2>Listado</h2>
+  <h2>Listado<span class="usuario" id="usuario"></span></h2>
   <div id="menu"></div>
   <hr>
   <div class="tabla">
@@ -87,13 +87,18 @@
 
   </form>
 
-  <script src="comunes.js"></script>
-  <script src="funciones.js"></script>
-  <script src="datos.js"></script>
+  <script type="module">
+    import { generarTabla, cargarSelect, crearMenu } from './funciones.js'
+    import { guardarContacto, editarRegistro, borrarRegistro, obtenerUsuarioActual } from './datos.js'
+    import { sexos, estadosCiviles } from './comunes.js'
 
-  <script>
+    document.getElementById('usuario').innerText = obtenerUsuarioActual() ? obtenerUsuarioActual().fullName : ''
+
+    crearMenu()
+
     document.getElementById("formulario").style.display = "none"
-    generarOtraTabla()
+
+    generarTabla()
 
     cargarSelect('sexo', sexos)
     cargarSelect('estadoCivil', estadosCiviles)

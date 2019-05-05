@@ -1,6 +1,6 @@
-const sexos = ['', 'Hombre', 'Mujer']
-const estadosCiviles = ['', 'Soltero', 'Casado', 'Separado', 'Divorciado', 'Viudo']
-const meses = [
+export const sexos = ['', 'Hombre', 'Mujer']
+export const estadosCiviles = ['', 'Soltero', 'Casado', 'Separado', 'Divorciado', 'Viudo']
+export const meses = [
   {
     mes: '01',
     nombre: 'Enero'
@@ -50,33 +50,43 @@ const meses = [
     nombre: 'Diciembre'
   }
 ]
-const opcionesMenu = [
+export const opcionesMenu = [
   {
     pagina: '/',
-    texto: 'Inicio'
+    texto: 'Inicio',
+    logueado: true
   },
   {
     pagina: '/contactos.html',
-    texto: 'Contactos'
+    texto: 'Contactos',
+    logueado: true
   },
   {
     pagina: '/listado.html',
-    texto: 'Listado'
+    texto: 'Listado',
+    logueado: true
   },
   {
     pagina: '/login.html',
-    texto: 'Login'
+    texto: 'Login',
+    logueado: false
   },
   {
     pagina: '/registro.html',
-    texto: 'Registrarme'
+    texto: 'Registrarme',
+    logueado: false
+  },
+  {
+    pagina: '/logout.html',
+    texto: 'Logout',
+    logueado: true
   }
 ]
-const contactos = 'contactos'
-const usuarios = 'usuarios'
-const usuarioActual = 'usuarioActual'
+export const contactos = 'contactos'
+export const usuarios = 'usuarios'
+export const usuarioActual = 'usuarioActual'
 
-const formatearFecha = (fecha) => { // 2019-01-23
+export const formatearFecha = (fecha) => { // 2019-01-23
   const lista = fecha.split('-')
            //   23                                         01 = Enero       Ene               2019 
   return `${lista[2]}-${meses.find(item => item.mes === lista[1]).nombre.substring(0, 3)}-${lista[0]}`
