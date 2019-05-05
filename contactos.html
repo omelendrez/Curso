@@ -18,12 +18,12 @@
 
     <div class="input-group">
       <label>Nombre</label>
-      <input type="text" name="nombre" class="input-control" required autofocus>
+      <input type="text" id="nombre" name="nombre" class="input-control" required autofocus>
     </div>
 
     <div class="input-group">
       <label>Apellido</label>
-      <input type="text" name="apellido" class="input-control" required>
+      <input type="text" id="apellido" name="apellido" class="input-control" required>
     </div>
 
     <div class="input-group">
@@ -33,7 +33,7 @@
 
     <div class="input-group">
       <label>Domicilio</label>
-      <input type="text" name="domicilio" class="input-control" required>
+      <input type="text" id="domicilio" name="domicilio" class="input-control" required>
     </div>
 
     <div class="input-group">
@@ -60,7 +60,7 @@
       <p id="error" class="error"></p>
     </div>
 
-   </form>
+  </form>
 
   <script src="comunes.js"></script>
   <script src="funciones.js"></script>
@@ -70,14 +70,54 @@
     cargarSelect('sexo', sexos)
     cargarSelect('estadoCivil', estadosCiviles)
 
-    const grabar = event => {
-      event.preventDefault()
+    const grabar = (e) => {
+      e.preventDefault();
+      const error = document.getElementById('error')
+      error.innerHTML = ''
+
+      // Validar nombre
+      const nombre = document.getElementById('nombre')
+      if (nombre.value.length < 3) {
+        error.innerHTML = 'Nombre debe tener 3 caracteres mínimo'
+        return
+      }
+
+      if (nombre.value.length > 20) {
+        error.innerHTML = 'Nombre debe tener 20 caracteres máximo'
+        return
+      }
+
+      // Validar apellido
+      const apellido = document.getElementById('apellido')
+      if (apellido.value.length < 3) {
+        error.innerHTML = 'Apellido debe tener 3 caracteres mínimo'
+        return
+      }
+
+      if (apellido.value.length > 20) {
+        error.innerHTML = 'Apellido debe tener 20 caracteres máximo'
+        return
+      }
+
+      // Validar domicilio
+      const domicilio = document.getElementById('domicilio')
+      if (domicilio.value.length < 5) {
+        error.innerHTML = 'Domicilio debe tener 5 caracteres mínimo'
+        return
+      }
+
+      if (domicilio.value.length > 20) {
+        error.innerHTML = 'Domicilio debe tener 20 caracteres máximo'
+        return
+      }
+
       const campos = formulario.elements
       const payload = {}
       for (let i = 0; i < campos.length; i++) {
         if (campos[i].name !== '')
           payload[campos[i].name] = campos[i].value
       }
+      
       guardarContacto(payload)
     }
 
