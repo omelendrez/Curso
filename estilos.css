@@ -49,11 +49,16 @@ hr {
   border-top: 1px solid #f1c40f;
 }
 
+#menu,
+.contenido {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
 form {
   background-color: #f7f7f7;
   width: 600px;
-  box-shadow: 2px 4px 10px #34495e;
-  border-radius: 15px;
+  box-shadow: 1px 2px 3px #abc;
   margin-left: auto;
   margin-right: auto; 
 }
@@ -66,7 +71,6 @@ form div.titulo {
   margin-bottom: 30px;
   background-color: #2980b9;
   color: #fff;
-  border-radius: 15px 15px 0px 0px;
 }
 
 form .input-group {
@@ -108,12 +112,12 @@ table {
   margin-left: 15px;
   width: 90%;
   border-collapse: collapse;
+  box-shadow: 1px 2px 3px #abc;
 }
 
 .tabla {
-  border-radius: 5px;
   background-color: #fff;
-  box-shadow: 2px 4px 10px #34495e;
+  box-shadow: 1px 2px 3px #abc;
   margin-left: auto;
   margin-right: auto; 
   min-height: 80%;
@@ -127,7 +131,6 @@ div.tabla div.titulo {
   margin-bottom: 30px;
   background-color: #4CAF50;
   color: #fff;
-  border-radius: 5px 5px 0px 0px;
 }
 
 
@@ -164,28 +167,14 @@ tr:nth-child(even) {
   text-align: center;
 }
 
-.boton-editar {
-  background-color: blue;
-  color: white;
-  cursor: pointer;
-}
-
-.boton-editar:hover {
-  background-color: darkblue;
-}
-
 .centrado {
   text-align: center;
 }
 
 /* Login form */
-form.login {
-  border-radius: 5px;
-}
 
 form.login div.titulo {
   background-color: #E91E63;
-  border-radius: 5px 5px 0px 0px;
 }
 
 form.login div.input-group button.button {

@@ -54,6 +54,11 @@ export const generarTabla = () => {
       // obtener el valor de la propiedad
       // de acuerdo al nombre del campo, le asignamos el valor que corresponda
       switch (propiedad) {
+        case 'creado':
+        case 'modificado':
+          centrado = 'centrado'
+          valor = objeto[propiedad]
+          break
         case 'fechaNacimiento':
           valor = formatearFecha(objeto[propiedad])
           centrado = 'centrado'

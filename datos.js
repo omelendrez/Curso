@@ -1,12 +1,11 @@
-import { usuarioActual, contactos, usuarios } from './comunes.js'
+import { usuarioActual, contactos, usuarios, fechaActual } from './comunes.js'
 
 export const guardarContacto = contacto => {
     contacto.usuario = obtenerUsuarioActual().usuario
-
     const lista = JSON.parse(localStorage.getItem(contactos)) || []
-
     if (lista.find(registro => registro.nombre === contacto.nombre)) {
         // modificar
+        contacto.modificado = fechaActual()
         lista.map(registro => {
             if (registro.nombre === contacto.nombre) {
                 for (const campo in contacto) {
@@ -16,6 +15,8 @@ export const guardarContacto = contacto => {
         })
     } else {
         // agregar    
+        contacto.creado = fechaActual()
+        contacto.modificado = fechaActual()
         lista.push(contacto)
     }
 
