@@ -175,7 +175,6 @@ tr:nth-child(even) {
 
 form.login div.titulo {
   background-color: lightpink;
-  border-radius: 5px 5px 0px 0px;
 }
 
 form.login div.input-group button.button {
