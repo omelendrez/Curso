@@ -24,16 +24,16 @@ export const guardarContacto = contacto => {
     location.href = 'listado.html'
 }
 
-export const borrarRegistro = (valor) => {
-    const nombre = valor.target.dataset.nombre
+export const borrarRegistro = (elemento) => {
+    const nombre = elemento.target.dataset.nombre
     const lista = obtenerLista()
     const resultado = lista.filter(item => item.nombre !== nombre)
     localStorage.setItem(contactos, JSON.stringify(resultado))
     location.href = 'listado.html'
 }
 
-export const editarRegistro = (valor) => {
-    const nombre = valor.target.dataset.nombre
+export const editarRegistro = (elemento) => {
+    const nombre = elemento.target.dataset.nombre
     const lista = obtenerLista()
     const contacto = lista.find(contacto => contacto.nombre === nombre)
     for (const campo in contacto) {
