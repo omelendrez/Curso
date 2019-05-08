@@ -37,7 +37,7 @@
   </form>
 
   <script type="module">
-
+    import { crearMenu } from './funciones.js'
     import { loguearse } from './datos.js'
 
     const login = (e) => {
@@ -80,6 +80,7 @@
     }
 
     loginForm.onsubmit = login
+    crearMenu()
   </script>
 
 
