@@ -80,7 +80,8 @@ export const generarTabla = () => {
       html.push(`<td class="${centrado}">${valor}</td>`)
 
     })
-
+    // existen fisicamente en vez de generarse dinamicamente con una funcion
+    // data-nombre es un nuevo atributo que dsps se toma en funciones
     html.push(`
     <td class="no-border">
       <i class="fa fa-trash" data-nombre="${objeto.nombre}"></i>
