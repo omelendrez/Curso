@@ -52,12 +52,12 @@ export const meses = [
 ]
 export const opcionesMenu = [
   {
-    pagina: '../',
+    pagina: 'index.html',
     texto: 'Inicio',
     logueado: true
   },
   {
-    pagina: '../contactos.html',
+    pagina: 'contactos.html',
     texto: 'Contactos',
     logueado: true
   },
