@@ -65,7 +65,7 @@ export const loguearse = usuario => {
     }
     delete user.password
     localStorage.setItem(usuarioActual, JSON.stringify(user))
-    location.href = '/'
+    location.href = 'index.html'
 }
 
 export const obtenerUsuarioActual = () => {
@@ -74,5 +74,5 @@ export const obtenerUsuarioActual = () => {
 
 export const logout = () => {
     localStorage.removeItem(usuarioActual)
-    location.href = '/'
+    location.href = 'index.html'
 }
