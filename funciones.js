@@ -10,7 +10,7 @@ export const crearMenu = () => {
       a.appendChild(linkText)
       a.title = opcion.texto
       a.href = opcion.pagina
-      if (document.location.pathname === opcion.pagina)
+      if ('..' + document.location.pathname === opcion.pagina)
         a.className = 'active'
       if (opcion.texto === 'Logout')
         a.className = 'float-right'
