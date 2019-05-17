@@ -105,12 +105,13 @@
 
     generarTabla()
 
+    //Crea un evento para editar
     const botonesEditar = document.getElementsByClassName('fa-edit')
     for (let i = 0; i < botonesEditar.length; i++) {
       const boton = botonesEditar[i];
       boton.onclick = editarRegistro;
     }
-
+    //Crea un evento para borrar
     const botonesBorrar = document.getElementsByClassName('fa-trash')
     for (let i = 0; i < botonesBorrar.length; i++) {
       const boton = botonesBorrar[i];
